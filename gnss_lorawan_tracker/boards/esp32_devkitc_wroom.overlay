@@ -1,0 +1,67 @@
+/ {
+    aliases {
+        gnss = &gnss;
+        led0 = &led0;
+        ignition = &button1;
+    };
+};
+
+/ {
+    buttons {
+        compatible = "gpio-keys";
+        button1: button_1 {
+            gpios = <&gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Ignition signal";
+			zephyr,code = <INPUT_KEY_1>;
+        };
+    };
+
+     leds {
+        compatible = "gpio-leds";
+        led0: led {
+            gpios = <&gpio0 18 GPIO_ACTIVE_HIGH>;
+            label = "Breathing light";
+        };
+      };   
+};
+
+&pinctrl {
+/* UART1: gnss */
+uart1_default: uart1_default {
+		group1 {
+			pinmux = <UART1_TX_GPIO25>;
+		};
+		group2 {
+			pinmux = <UART1_RX_GPIO26>;
+			bias-pull-up;
+		};
+	};
+
+/* UART2: lorawan */
+uart2_default: uart2_default {
+		group1 {
+			pinmux = <UART2_TX_GPIO23>;
+		};
+		group2 {
+			pinmux = <UART2_RX_GPIO5>;
+			bias-pull-up;
+		};
+	};    
+};
+
+&uart1 {
+        current-speed = <9600>;
+        status = "okay";
+
+        gnss: gnss-nmea-generic {
+                compatible = "gnss-nmea-generic";
+                status = "okay";
+        };
+};
+
+/* UART2: lorawan */
+&uart2 {
+        current-speed = <9600>;
+        status = "okay";
+
+};

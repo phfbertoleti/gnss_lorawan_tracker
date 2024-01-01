@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "lorawan_uart_smartmodular.h": "c",
+        "breathing_light.h": "c"
+    }
+}

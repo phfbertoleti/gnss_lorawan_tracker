@@ -1,0 +1,48 @@
+mainmenu "GNSS tracker application"
+
+config BREATHING_LIGHT_ENABLE
+    bool "Enable/disable breathing light"
+    default y    
+
+config BREATHING_LIGHT_TASK_PRIO
+	int "Breathing light task priority"
+	default 7
+
+config BREATHING_LIGHT_TASK_STACK_SIZE
+    int "Breathing light task stack size"
+    default 1024
+    
+config LORAWAN_UART_SMARTMODULAR_DEVADDR
+    string "Device Address - LoRaWAN ABP"
+    default "00:00:00:00"
+
+config LORAWAN_UART_SMARTMODULAR_APPSKEY
+    string "Application Session Key - LoRaWAN ABP"
+    default "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
+
+config LORAWAN_UART_SMARTMODULAR_NWKSKEY
+    string "Network Session Key - LoRaWAN ABP"
+    default "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
+
+config LORAWAN_UART_SMARTMODULAR_APPEUI
+    string "Application EUI - LoRaWAN ABP"
+    default "00:00:00:00:00:00:00:00"
+
+config GNSS_MANAGER_TASK_PRIO
+	int "GNSS manager task priority"
+	default 7
+
+config GNSS_MANAGER_TASK_STACK_SIZE
+    int "GNSS manager task stack size"
+    default 1024
+
+config GNSS_MANAGER_TIME_TO_SEND_LORAWAN_MESSAGE
+    int "Time to send LoRaWAN message (ms)"
+    default 30000    
+
+config IGNITION_TASK_STACK_SIZE
+    int "Ignition monitor task stack size"
+    default 1024
+    
+
+source "Kconfig.zephyr"    

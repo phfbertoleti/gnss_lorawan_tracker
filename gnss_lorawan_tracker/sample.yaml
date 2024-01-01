@@ -1,0 +1,13 @@
+# Copyright (c) 2023 Trackunit Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+sample:
+  name: GNSS LoRaWAN tracker
+tests:
+  sample.drivers.gnss:
+    tags:
+      - drivers
+      - gnss
+      - lorawan
+    filter: dt_alias_exists("gnss")
+    depends_on: gnss
